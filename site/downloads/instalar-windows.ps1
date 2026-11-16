@@ -33,7 +33,7 @@ try { [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::
 
 $Msys = "C:\msys64"
 $Bash = Join-Path $Msys "usr\bin\bash.exe"
-$Py   = Join-Path $Msys "mingw64\bin\python.exe"
+$Py   = Join-Path $Msys "ucrt64\bin\python.exe"
 $Prog = Join-Path $env:LOCALAPPDATA "Programs"
 $Temp = Join-Path $env:TEMP ("instalador-" + [guid]::NewGuid().ToString("N").Substring(0, 8))
 
@@ -65,7 +65,7 @@ function Instalar-Msys2 {
 }
 
 function Rodar-Bash($comando) {
-    $env:MSYSTEM = "MINGW64"
+    $env:MSYSTEM = "UCRT64"
     $env:CHERE_INVOKING = "1"
     & $Bash -lc $comando
     if ($LASTEXITCODE -ne 0) { throw "Falhou dentro do MSYS2: $comando" }
@@ -77,20 +77,20 @@ function Instalar-Dependencias {
     Rodar-Bash "pacman -Syu --noconfirm"
 
     $pacotes = @(
-        "mingw-w64-x86_64-python",
-        "mingw-w64-x86_64-python-pip",
-        "mingw-w64-x86_64-python-gobject",
-        "mingw-w64-x86_64-gtk4",
-        "mingw-w64-x86_64-libadwaita",
-        "mingw-w64-x86_64-adwaita-icon-theme",
-        "mingw-w64-x86_64-hicolor-icon-theme",
-        "mingw-w64-x86_64-ffmpeg",
-        "mingw-w64-x86_64-imagemagick",
-        "mingw-w64-x86_64-poppler",
-        "mingw-w64-x86_64-ghostscript",
-        "mingw-w64-x86_64-7zip",
-        "mingw-w64-x86_64-tesseract",
-        "mingw-w64-x86_64-mpv"
+        "mingw-w64-ucrt-x86_64-python",
+        "mingw-w64-ucrt-x86_64-python-pip",
+        "mingw-w64-ucrt-x86_64-python-gobject",
+        "mingw-w64-ucrt-x86_64-gtk4",
+        "mingw-w64-ucrt-x86_64-libadwaita",
+        "mingw-w64-ucrt-x86_64-adwaita-icon-theme",
+        "mingw-w64-ucrt-x86_64-hicolor-icon-theme",
+        "mingw-w64-ucrt-x86_64-ffmpeg",
+        "mingw-w64-ucrt-x86_64-imagemagick",
+        "mingw-w64-ucrt-x86_64-poppler",
+        "mingw-w64-ucrt-x86_64-ghostscript",
+        "mingw-w64-ucrt-x86_64-7zip",
+        "mingw-w64-ucrt-x86_64-tesseract-ocr",
+        "mingw-w64-ucrt-x86_64-mpv"
     )
     Passo "Instalando GTK4, Python e as ferramentas de conversao..."
     Rodar-Bash ("pacman -S --noconfirm --needed " + ($pacotes -join " "))
@@ -109,13 +109,13 @@ function Novo-Lancador($destino, $nomeBat) {
     # .bat com o ambiente do GTK  +  .vbs que abre sem janela de console
     $bat = @'
 @echo off
-set "PATH={0}\mingw64\bin;%PATH%"
-set "XDG_DATA_DIRS={0}\mingw64\share"
-set "GSETTINGS_SCHEMA_DIR={0}\mingw64\share\glib-2.0\schemas"
+set "PATH={0}\ucrt64\bin;%PATH%"
+set "XDG_DATA_DIRS={0}\ucrt64\share"
+set "GSETTINGS_SCHEMA_DIR={0}\ucrt64\share\glib-2.0\schemas"
 set "PYTHONUTF8=1"
 set "PYTHONIOENCODING=utf-8"
 cd /d "%~dp0"
-"{0}\mingw64\bin\python.exe" "%~dp0main.py" %*
+"{0}\ucrt64\bin\python.exe" "%~dp0main.py" %*
 '@ -f $Msys
     Set-Content -Path (Join-Path $destino ($nomeBat + ".bat")) -Value $bat -Encoding ASCII
 

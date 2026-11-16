@@ -31,24 +31,24 @@ jobs:
           path: site/downloads/*.zip
 
   windows:
-    name: Windows (MSYS2 GTK4)
+    name: Windows (MSYS2 UCRT64 + GTK4)
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
 
       - uses: msys2/setup-msys2@v2
         with:
-          msystem: MINGW64
+          msystem: UCRT64
           update: true
           install: >-
-            mingw-w64-x86_64-python
-            mingw-w64-x86_64-python-pip
-            mingw-w64-x86_64-python-gobject
-            mingw-w64-x86_64-gtk4
-            mingw-w64-x86_64-libadwaita
-            mingw-w64-x86_64-adwaita-icon-theme
-            mingw-w64-x86_64-ffmpeg
-            mingw-w64-x86_64-imagemagick
+            mingw-w64-ucrt-x86_64-python
+            mingw-w64-ucrt-x86_64-python-pip
+            mingw-w64-ucrt-x86_64-python-gobject
+            mingw-w64-ucrt-x86_64-gtk4
+            mingw-w64-ucrt-x86_64-libadwaita
+            mingw-w64-ucrt-x86_64-adwaita-icon-theme
+            mingw-w64-ucrt-x86_64-ffmpeg
+            mingw-w64-ucrt-x86_64-imagemagick
 
       - name: Instalar yt-dlp
         shell: msys2 {0}
@@ -63,7 +63,7 @@ jobs:
       - name: GTK4 + PyGObject importam?
         shell: msys2 {0}
         env:
-          XDG_DATA_DIRS: C:\msys64\mingw64\share
+          XDG_DATA_DIRS: C:\msys64\ucrt64\share
         run: |
           python - <<'PY'
           import gi
@@ -76,7 +76,7 @@ jobs:
       - name: Módulo de plataforma é portátil?
         shell: msys2 {0}
         env:
-          XDG_DATA_DIRS: C:\msys64\mingw64\share
+          XDG_DATA_DIRS: C:\msys64\ucrt64\share
         run: |
           cd apps/conversor && python -c "from conversor import plataforma; print(plataforma.dir_config(), plataforma.WINDOWS)"
           cd ../baixador && python -c "from ytdlgtk import plataforma; print(plataforma.dir_config(), plataforma.WINDOWS)"
