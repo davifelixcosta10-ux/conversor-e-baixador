@@ -18,8 +18,8 @@ ou direto:
 
 | | Windows | Linux | Código |
 |---|---|---|---|
-| Conversor de Arquivos | [`instalar-windows.ps1`](https://github.com/davifelixcosta10-ux/conversor-e-baixador/releases/download/v0.1.2/instalar-windows.ps1) | [`conversor.zip`](https://github.com/davifelixcosta10-ux/conversor-e-baixador/releases/download/v0.1.2/conversor.zip) | [`conversor-fonte.zip`](https://github.com/davifelixcosta10-ux/conversor-e-baixador/releases/download/v0.1.2/conversor-fonte.zip) |
-| Baixador de Vid e Img | [`instalar-windows.ps1`](https://github.com/davifelixcosta10-ux/conversor-e-baixador/releases/download/v0.1.2/instalar-windows.ps1) | [`baixador.zip`](https://github.com/davifelixcosta10-ux/conversor-e-baixador/releases/download/v0.1.2/baixador.zip) | [`baixador-fonte.zip`](https://github.com/davifelixcosta10-ux/conversor-e-baixador/releases/download/v0.1.2/baixador-fonte.zip) |
+| Conversor de Arquivos | [`instalar-windows.ps1`](https://github.com/davifelixcosta10-ux/conversor-e-baixador/releases/download/v0.1.3/instalar-windows.ps1) | [`conversor.zip`](https://github.com/davifelixcosta10-ux/conversor-e-baixador/releases/download/v0.1.3/conversor.zip) | [`conversor-fonte.zip`](https://github.com/davifelixcosta10-ux/conversor-e-baixador/releases/download/v0.1.3/conversor-fonte.zip) |
+| Baixador de Vid e Img | [`instalar-windows.ps1`](https://github.com/davifelixcosta10-ux/conversor-e-baixador/releases/download/v0.1.3/instalar-windows.ps1) | [`baixador.zip`](https://github.com/davifelixcosta10-ux/conversor-e-baixador/releases/download/v0.1.3/baixador.zip) | [`baixador-fonte.zip`](https://github.com/davifelixcosta10-ux/conversor-e-baixador/releases/download/v0.1.3/baixador-fonte.zip) |
 
 O site de download é <https://conversor-e-baixador.vercel.app>.
 
@@ -111,3 +111,17 @@ MIT — veja [LICENSE](LICENSE).
 
 O site não hospeda conteúdo de terceiros. As ferramentas baixam da fonte, como
 um navegador faria; use com responsabilidade e respeite os termos dos sites.
+
+## Publicando uma versão nova
+
+Os links do site e do instalador são **versionados** de propósito: os assets
+do GitHub são imutáveis e o redirect `/releases/latest/` fica em cache (já
+chegou a servir um `.ps1` velho apontando para outro host). Então, a cada
+versão:
+
+1. `python3 scripts/empacotar.py`
+2. `gh release create vX.Y.Z site/downloads/*.zip site/downloads/instalar-windows.ps1 --notes-file notas.md`
+3. trocar `releases/download/vANTIGA` por `releases/download/vX.Y.Z` em
+   `site/index.html`, `site/downloads/instalar-windows.ps1` e neste README
+4. republicar o site (Vercel)
+5. `gh release delete vANTIGA --yes`

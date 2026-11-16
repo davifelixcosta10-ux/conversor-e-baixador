@@ -22,7 +22,7 @@ param(
     [string]$App = "ambos",
 
     # Onde estao conversor.zip / baixador.zip (troque se hospedar em outro lugar).
-    [string]$BaseUrl = "https://github.com/davifelixcosta10-ux/conversor-e-baixador/releases/download/v0.1.2",
+    [string]$BaseUrl = "https://github.com/davifelixcosta10-ux/conversor-e-baixador/releases/download/v0.1.3",
 
     # Pula a instalacao do MSYS2 quando o ambiente ja esta pronto.
     [switch]$PularDependencias
