@@ -18,8 +18,8 @@ ou direto:
 
 | | Windows | Linux | Código |
 |---|---|---|---|
-| Conversor de Arquivos | [`instalar-windows.ps1`](https://github.com/davifelixcosta10-ux/conversor-e-baixador/releases/latest/download/instalar-windows.ps1) | [`conversor.zip`](https://github.com/davifelixcosta10-ux/conversor-e-baixador/releases/latest/download/conversor.zip) | [`conversor-fonte.zip`](https://github.com/davifelixcosta10-ux/conversor-e-baixador/releases/latest/download/conversor-fonte.zip) |
-| Baixador de Vid e Img | [`instalar-windows.ps1`](https://github.com/davifelixcosta10-ux/conversor-e-baixador/releases/latest/download/instalar-windows.ps1) | [`baixador.zip`](https://github.com/davifelixcosta10-ux/conversor-e-baixador/releases/latest/download/baixador.zip) | [`baixador-fonte.zip`](https://github.com/davifelixcosta10-ux/conversor-e-baixador/releases/latest/download/baixador-fonte.zip) |
+| Conversor de Arquivos | [`instalar-windows.ps1`](https://github.com/davifelixcosta10-ux/conversor-e-baixador/releases/download/v0.1.2/instalar-windows.ps1) | [`conversor.zip`](https://github.com/davifelixcosta10-ux/conversor-e-baixador/releases/download/v0.1.2/conversor.zip) | [`conversor-fonte.zip`](https://github.com/davifelixcosta10-ux/conversor-e-baixador/releases/download/v0.1.2/conversor-fonte.zip) |
+| Baixador de Vid e Img | [`instalar-windows.ps1`](https://github.com/davifelixcosta10-ux/conversor-e-baixador/releases/download/v0.1.2/instalar-windows.ps1) | [`baixador.zip`](https://github.com/davifelixcosta10-ux/conversor-e-baixador/releases/download/v0.1.2/baixador.zip) | [`baixador-fonte.zip`](https://github.com/davifelixcosta10-ux/conversor-e-baixador/releases/download/v0.1.2/baixador-fonte.zip) |
 
 O site de download é <https://conversor-e-baixador.vercel.app>.
 
