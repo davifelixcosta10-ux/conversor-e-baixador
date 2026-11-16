@@ -22,7 +22,7 @@ param(
     [string]$App = "ambos",
 
     # Onde estao conversor.zip / baixador.zip (troque se hospedar em outro lugar).
-    [string]$BaseUrl = "https://conversor-e-baixador.vercel.app",
+    [string]$BaseUrl = "https://github.com/davifelixcosta10-ux/conversor-e-baixador/releases/latest/download",
 
     # Pula a instalacao do MSYS2 quando o ambiente ja esta pronto.
     [switch]$PularDependencias
@@ -148,7 +148,7 @@ function Novo-Atalho($vbs, $nome, $pasta) {
 # ---------------------------------------------------------------------------
 function Instalar-App($id, $nome) {
     $zip = Join-Path $Temp ($id + ".zip")
-    $url = $BaseUrl.TrimEnd("/") + "/downloads/" + $id + ".zip"
+    $url = $BaseUrl.TrimEnd("/") + "/" + $id + ".zip"
 
     Passo "Baixando $nome de $url"
     Invoke-WebRequest -Uri $url -OutFile $zip
