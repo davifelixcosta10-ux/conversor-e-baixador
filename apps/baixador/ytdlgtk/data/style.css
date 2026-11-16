@@ -1,0 +1,299 @@
+/* Baixador de Vídeos — GTK4/libadwaita
+   Paleta: apenas cores semânticas do tema (@accent_bg_color, @success_color…)
+   para funcionar em claro, escuro e nos temas do Omarchy. */
+
+/* ============================================================
+   Entrada de links
+   ============================================================ */
+.cartao-entrada {
+  background: @card_bg_color;
+  border: 1px solid @borders;
+  border-radius: 16px;
+  padding: 14px;
+}
+
+entry.entrada-principal {
+  min-height: 44px;
+  border-radius: 12px;
+  padding: 2px 10px;
+  background: alpha(@theme_fg_color, 0.05);
+  border: 1px solid transparent;
+  transition: border-color 140ms ease, background 140ms ease;
+}
+
+entry.entrada-principal:focus-within,
+entry.entrada-principal:focus {
+  background: alpha(@theme_fg_color, 0.03);
+  border-color: @accent_bg_color;
+}
+
+entry.entrada-principal image {
+  opacity: 0.45;
+}
+
+.botao-icone {
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 12px;
+  background: alpha(@theme_fg_color, 0.06);
+  color: alpha(@theme_fg_color, 0.7);
+  padding: 0;
+}
+
+.botao-icone:hover {
+  background: alpha(@theme_fg_color, 0.11);
+  color: @theme_fg_color;
+}
+
+.botao-baixar {
+  min-height: 44px;
+  border-radius: 12px;
+  padding: 0 18px;
+  font-weight: 600;
+}
+
+/* chips de opção (destino, etc.) */
+.chip {
+  min-height: 30px;
+  border-radius: 999px;
+  padding: 2px 12px;
+  font-size: 0.86rem;
+  font-weight: 500;
+  background: alpha(@theme_fg_color, 0.07);
+  color: alpha(@theme_fg_color, 0.82);
+}
+
+.chip:hover {
+  background: alpha(@theme_fg_color, 0.12);
+  color: @theme_fg_color;
+}
+
+.rotulo-opcao {
+  font-size: 0.82rem;
+  color: alpha(@theme_fg_color, 0.5);
+}
+
+.cartao-entrada dropdown > button {
+  min-height: 30px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: alpha(@theme_fg_color, 0.07);
+  border: none;
+  font-size: 0.86rem;
+}
+
+.cartao-entrada dropdown > button:hover {
+  background: alpha(@theme_fg_color, 0.12);
+}
+
+/* ============================================================
+   Cabeçalho da fila
+   ============================================================ */
+.titulo-secao {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: alpha(@theme_fg_color, 0.85);
+}
+
+.contador {
+  font-size: 0.76rem;
+  font-weight: 600;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: alpha(@accent_bg_color, 0.16);
+  color: @accent_color;
+}
+
+/* ============================================================
+   Lista / cartões
+   ============================================================ */
+list.fila {
+  background: transparent;
+}
+
+list.fila > row {
+  padding: 0;
+  background: @card_bg_color;
+}
+
+list.fila > row:hover {
+  background: alpha(@theme_fg_color, 0.03);
+}
+
+.chip-icone {
+  min-width: 32px;
+  min-height: 32px;
+  border-radius: 10px;
+  background: alpha(@theme_fg_color, 0.08);
+  color: alpha(@theme_fg_color, 0.65);
+}
+
+.chip-icone.baixando {
+  background: alpha(@accent_bg_color, 0.16);
+  color: @accent_color;
+}
+
+.chip-icone.concluido {
+  background: alpha(@success_color, 0.16);
+  color: @success_color;
+}
+
+.chip-icone.erro {
+  background: alpha(@error_color, 0.16);
+  color: @error_color;
+}
+
+.chip-icone.pausado {
+  background: alpha(@warning_color, 0.16);
+  color: @warning_color;
+}
+
+.chip-icone.processando {
+  background: alpha(@accent_bg_color, 0.12);
+  color: @accent_color;
+}
+
+.titulo-item {
+  font-size: 0.94rem;
+  font-weight: 600;
+  color: alpha(@theme_fg_color, 0.95);
+}
+
+.meta-item {
+  font-size: 0.79rem;
+  color: alpha(@theme_fg_color, 0.5);
+}
+
+.estado-item {
+  font-size: 0.78rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  min-width: 2.6em;
+  color: alpha(@theme_fg_color, 0.55);
+  padding-right: 4px;
+}
+
+row.concluido .estado-item {
+  color: @success_color;
+}
+
+row.erro .estado-item {
+  color: @error_color;
+}
+
+/* ações por item */
+.acao-item {
+  min-width: 30px;
+  min-height: 30px;
+  border-radius: 999px;
+  padding: 0;
+  background: transparent;
+  color: alpha(@theme_fg_color, 0.4);
+  transition: background 120ms ease, color 120ms ease;
+}
+
+.acao-item:hover {
+  background: alpha(@theme_fg_color, 0.09);
+  color: @theme_fg_color;
+}
+
+.acao-azul:hover {
+  background: alpha(@accent_bg_color, 0.16);
+  color: @accent_color;
+}
+
+.acao-verde:hover {
+  background: alpha(@success_color, 0.18);
+  color: @success_color;
+}
+
+.acao-vermelho:hover {
+  background: alpha(@error_color, 0.18);
+  color: @error_color;
+}
+
+/* ============================================================
+   Progresso fino
+   ============================================================ */
+progressbar.progresso-item > trough {
+  min-height: 4px;
+  border-radius: 99px;
+  background: alpha(@theme_fg_color, 0.09);
+}
+
+progressbar.progresso-item > trough > progress {
+  min-height: 4px;
+  border-radius: 99px;
+  background: @accent_bg_color;
+  transition: background 160ms ease;
+}
+
+row.concluido progressbar.progresso-item > trough > progress {
+  background: @success_color;
+}
+
+row.erro progressbar.progresso-item > trough > progress {
+  background: @error_color;
+}
+
+row.pausado progressbar.progresso-item > trough > progress {
+  background: @warning_color;
+}
+
+/* ============================================================
+   Rodapé
+   ============================================================ */
+.rodape {
+  border-top: 1px solid alpha(@borders, 0.7);
+  background: alpha(@theme_bg_color, 0.5);
+}
+
+.resumo {
+  font-size: 0.82rem;
+  color: alpha(@theme_fg_color, 0.55);
+}
+
+.acao-rodape {
+  min-width: 32px;
+  min-height: 32px;
+  border-radius: 9px;
+  padding: 0;
+  background: alpha(@theme_fg_color, 0.06);
+  color: alpha(@theme_fg_color, 0.7);
+}
+
+.acao-rodape:hover {
+  background: alpha(@theme_fg_color, 0.12);
+  color: @theme_fg_color;
+}
+
+/* ============================================================
+   Estado vazio
+   ============================================================ */
+.estado-vazio image {
+  -gtk-icon-size: 48px;
+  opacity: 0.4;
+}
+
+.estado-vazio > clamp > box > label.title {
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.estado-vazio > clamp > box > label.description {
+  font-size: 0.86rem;
+}
+
+/* ============================================================
+   Scrollbar discreta
+   ============================================================ */
+scrolledwindow > scrollbar slider {
+  min-width: 6px;
+  min-height: 6px;
+  background: alpha(@theme_fg_color, 0.16);
+  border-radius: 99px;
+}
+
+scrolledwindow > scrollbar slider:hover {
+  background: alpha(@theme_fg_color, 0.3);
+}

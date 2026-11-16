@@ -1,0 +1,2 @@
+# Linux (PyGObject vem do sistema; no Windows vem do MSYS2)
+PyGObject>=3.46

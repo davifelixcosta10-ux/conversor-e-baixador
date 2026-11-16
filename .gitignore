@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# lixo de build
+build/
+dist/
+*.spec

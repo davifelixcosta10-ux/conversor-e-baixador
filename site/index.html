@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Conversor &amp; Baixador — ferramentas de mídia para Linux e Windows</title>
+<meta name="description" content="Baixe vídeos e imagens de qualquer site e converta praticamente qualquer arquivo. Duas ferramentas de desktop, Linux e Windows, de graça.">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧰</text></svg>">
+</head>
+<body>
+<header class="topo">
+  <a class="marca" href="#topo">
+    <span class="marca-sinal">▚</span>
+    <span>conversor<span class="amp">&amp;</span>baixador</span>
+  </a>
+  <nav>
+    <a href="#baixar">Baixar</a>
+    <a href="#recursos">Recursos</a>
+    <a href="#faq">Dúvidas</a>
+    <a class="gh" href="https://github.com/davifelixcosta10-ux/conversor-e-baixador" target="_blank" rel="noopener">GitHub</a>
+  </nav>
+</header>
+
+<main id="topo">
+  <section class="hero">
+    <p class="olho">desktop · linux e windows · grátis</p>
+    <h1>Baixa, converte,<br><em>pronto.</em></h1>
+    <p class="sub">
+      Duas ferramentas que resolvem o que você faria abrindo terminal:
+      uma puxa vídeo e imagem de qualquer site, a outra transforma
+      praticamente qualquer arquivo em outro.
+    </p>
+    <div class="botoes">
+      <a class="btn primario" href="#baixar">Baixar agora</a>
+      <a class="btn" href="#recursos">Ver o que faz</a>
+    </div>
+    <p class="contador" id="contador" hidden><strong id="contador-num">0</strong> <span id="contador-rotulo">downloads registrados</span></p>
+  </section>
+
+  <section class="apps" id="baixar">
+    <article class="cartao">
+      <header>
+        <span class="icone">⬇</span>
+        <div>
+          <h2>Baixador de Vid e Img</h2>
+          <p class="tag">yt-dlp + gallery-dl + GTK4</p>
+        </div>
+      </header>
+      <p class="desc">
+        Cole o link, escolha a pasta e vai. Vídeos e galerias de imagem,
+        com legendas, capa e retomada de download interrompido.
+      </p>
+      <ul class="lista">
+        <li>Vídeo em MP4/WebM/MKV, áudio em MP3</li>
+        <li>Galerias de imagem com subpasta por site</li>
+        <li>Legendas <code>.srt</code> e capa em JPG</li>
+        <li>Pastas separadas para vídeo e imagem</li>
+        <li>Fila com pausar, cancelar e abrir pasta</li>
+      </ul>
+      <div class="baixar-linha">
+        <a class="btn primario" data-app="baixador" data-plataforma="windows"
+           href="downloads/instalar-windows.ps1" download>Windows</a>
+        <a class="btn" data-app="baixador" data-plataforma="linux"
+           href="downloads/baixador.zip" download>Linux</a>
+        <a class="btn fantasma" data-app="baixador" data-plataforma="fonte"
+           href="downloads/baixador-fonte.zip" download>Código</a>
+      </div>
+      <p class="nota">Windows: o instalador prepara o ambiente (GTK4 + Python) e cria o atalho.</p>
+    </article>
+
+    <article class="cartao">
+      <header>
+        <span class="icone">⇄</span>
+        <div>
+          <h2>Conversor de Arquivos</h2>
+          <p class="tag">ffmpeg + ImageMagick + Poppler</p>
+        </div>
+      </header>
+      <p class="desc">
+        Vídeo, áudio, imagem, PDF, documento e pacote. Escolhe a categoria,
+        vê só o que serve pros seus arquivos e converte em lote.
+      </p>
+      <ul class="lista">
+        <li>GIF e WebP animado <strong>em loop</strong> pro mpv</li>
+        <li>PDF → PNG/JPG/TXT, dividir, juntar, comprimir</li>
+        <li>Imagem → texto (OCR) e imagens → PDF</li>
+        <li>Compactar em ZIP/7z e extrair arquivos</li>
+        <li>Arrasta e solta, cola caminhos, lote inteiro</li>
+      </ul>
+      <div class="baixar-linha">
+        <a class="btn primario" data-app="conversor" data-plataforma="windows"
+           href="downloads/instalar-windows.ps1" download>Windows</a>
+        <a class="btn" data-app="conversor" data-plataforma="linux"
+           href="downloads/conversor.zip" download>Linux</a>
+        <a class="btn fantasma" data-app="conversor" data-plataforma="fonte"
+           href="downloads/conversor-fonte.zip" download>Código</a>
+      </div>
+      <p class="nota">No Linux, o conversor usa ffmpeg e ImageMagick do sistema.</p>
+    </article>
+    <p class="aviso-sistema" id="aviso-sistema" hidden></p>
+  </section>
+
+  <section class="recursos" id="recursos">
+    <h2>O que tem dentro</h2>
+    <div class="grade">
+      <div class="item">
+        <h3>Sem nuvem</h3>
+        <p>Conversão e download rodam na sua máquina. Nada é enviado pra servidor nenhum.</p>
+      </div>
+      <div class="item">
+        <h3>Fila de verdade</h3>
+        <p>Vários arquivos de uma vez, progresso por item, cancelar no meio e abrir o resultado direto.</p>
+      </div>
+      <div class="item">
+        <h3>Feito pra teclado e mouse</h3>
+        <p>Arrastar e soltar, Ctrl+V de caminhos, linha de comando e atalhos do sistema.</p>
+      </div>
+      <div class="item">
+        <h3>Formato certo</h3>
+        <p>GIF e WebP animado com loop infinito — os únicos que repetem sozinhos no mpv.</p>
+      </div>
+      <div class="item">
+        <h3>Português</h3>
+        <p>Interface, mensagens de erro e nomes de arquivo pensados em português.</p>
+      </div>
+      <div class="item">
+        <h3>Código aberto</h3>
+        <p>Python + GTK4. Lê, muda, recompila. Licença MIT.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq" id="faq">
+    <h2>Dúvidas rápidas</h2>
+    <details>
+      <summary>Preciso instalar algo no Linux?</summary>
+      <p>O Conversor usa <code>ffmpeg</code>, <code>ImageMagick</code>, <code>poppler</code>, <code>ghostscript</code> e <code>7z</code>. O Baixador já vem com o yt-dlp embutido. O instalador avisa o que falta.</p>
+    </details>
+    <details>
+      <summary>E no Windows?</summary>
+      <p>O instalador instala o Python e o GTK4 pelo MSYS2, copia o app e cria o atalho no menu Iniciar. É a primeira versão pra Windows — se algo falhar, abre uma issue no GitHub.</p>
+    </details>
+    <details>
+      <summary>Por que meu WebM não fica em loop no mpv?</summary>
+      <p>WebM e MP4 não carregam marcação de repetição. Use <strong>GIF</strong> ou <strong>WebP animado</strong>: os dois têm loop infinito gravado no arquivo.</p>
+    </details>
+    <details>
+      <summary>Os apps mandam meus arquivos pra algum lugar?</summary>
+      <p>Não. Só o contador de downloads desta página registra um número (qual app e qual sistema), sem IP e sem cookie.</p>
+    </details>
+  </section>
+</main>
+
+<footer class="rodape">
+  <p>Feito com Python, GTK4 e teimosia. <a href="https://github.com/davifelixcosta10-ux/conversor-e-baixador" target="_blank" rel="noopener">Código no GitHub</a> · Licença MIT</p>
+  <p class="miudo">Este site não hospeda conteúdo de terceiros. Use as ferramentas com responsabilidade.</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

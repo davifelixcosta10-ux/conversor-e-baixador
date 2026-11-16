@@ -1,0 +1,8 @@
+# Python
+PyGObject>=3.46
+yt-dlp>=2025.1.1
+requests>=2.31
+
+# Opcional — impersonação TLS (contorna Cloudflare em muitos sites +18)
+# pip install curl_cffi
+# curl_cffi>=0.7

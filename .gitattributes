@@ -1,0 +1,11 @@
+* text=auto eol=lf
+
+# yt-dlp vendido: binário (zipapp). Não mexer no conteúdo nem no EOL.
+apps/baixador/bin/yt-dlp binary
+*.zip binary
+*.png binary
+*.svg text
+*.ps1 text eol=crlf
+*.bat text eol=crlf
+*.vbs text eol=crlf
+*.sh text eol=lf

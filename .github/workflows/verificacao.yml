@@ -1,0 +1,82 @@
+name: verificacao
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  sintaxe:
+    name: Sintaxe + empacotamento
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Compilar todos os módulos
+        run: |
+          python -m py_compile apps/conversor/main.py apps/conversor/conversor/*.py
+          python -m py_compile apps/baixador/main.py apps/baixador/ytdlgtk/*.py
+
+      - name: Gerar pacotes de download
+        run: python scripts/empacotar.py
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pacotes
+          path: site/downloads/*.zip
+
+  windows:
+    name: Windows (MSYS2 GTK4)
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: msys2/setup-msys2@v2
+        with:
+          msystem: MINGW64
+          update: true
+          install: >-
+            mingw-w64-x86_64-python
+            mingw-w64-x86_64-python-pip
+            mingw-w64-x86_64-python-gobject
+            mingw-w64-x86_64-gtk4
+            mingw-w64-x86_64-libadwaita
+            mingw-w64-x86_64-adwaita-icon-theme
+            mingw-w64-x86_64-ffmpeg
+            mingw-w64-x86_64-imagemagick
+
+      - name: Instalar yt-dlp
+        shell: msys2 {0}
+        run: python -m pip install --upgrade yt-dlp requests
+
+      - name: Compilar os módulos no Python do MSYS2
+        shell: msys2 {0}
+        run: |
+          python -m py_compile apps/conversor/main.py apps/conversor/conversor/*.py
+          python -m py_compile apps/baixador/main.py apps/baixador/ytdlgtk/*.py
+
+      - name: GTK4 + PyGObject importam?
+        shell: msys2 {0}
+        env:
+          XDG_DATA_DIRS: C:\msys64\mingw64\share
+        run: |
+          python - <<'PY'
+          import gi
+          gi.require_version("Gtk", "4.0")
+          gi.require_version("Adw", "1")
+          from gi.repository import Gtk, Adw
+          print("GTK", Gtk.get_major_version(), Gtk.get_minor_version(), "| Adw", Adw.MAJOR_VERSION)
+          PY
+
+      - name: Módulo de plataforma é portátil?
+        shell: msys2 {0}
+        env:
+          XDG_DATA_DIRS: C:\msys64\mingw64\share
+        run: |
+          cd apps/conversor && python -c "from conversor import plataforma; print(plataforma.dir_config(), plataforma.WINDOWS)"
+          cd ../baixador && python -c "from ytdlgtk import plataforma; print(plataforma.dir_config(), plataforma.WINDOWS)"
